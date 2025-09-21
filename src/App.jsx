@@ -7,16 +7,21 @@ import Portal from "./Portal";
 import Farmer from "./Farmer";
 import Lab from "./Lab";
 import BatchSelection from "./BatchSelection";
+import Dashboard from "./Dashboard";
 import Consumer from "./Consumer";
 import Processor from "./Processor";
 import Manufacturer from "./Manufacturer";
 import LabScreen from "./LabScreen";
+import UploadTestResults from "./UploadTestResults";
+import CertificateTable from "./CertificateTable";
 
 import ForgotPassword from "./ForgotPassword";
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/CertificateTable" element={<CertificateTable />} />
+        <Route path="/UploadTestResults" element={<UploadTestResults />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/" element={<Home />} /> 
@@ -28,6 +33,7 @@ function App() {
         <Route path="/Processor" element={<Processor />} />
         <Route path="/Consumer" element={<Consumer />} />
         <Route path="/BatchSelection" element={<BatchSelection />} />
+        <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/LabScreen" element={<LabScreen />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
       </Routes>

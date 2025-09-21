@@ -50,55 +50,14 @@ function Lab(props) {
   };
 
   const handleUploadResults = async () => {
-    const fileInput = document.createElement('input');
-    fileInput.type = 'file';
-    fileInput.accept = '.pdf,.doc,.docx,.png,.jpg';
-    fileInput.onchange = async (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        console.log(`Uploading file: ${file.name}`);
-        const formData = new FormData();
-        formData.append('testResult', file);
-        try {
-          const response = await axios.post('/api/upload-test-results', formData, {
-            headers: { 'Content-Type': 'multipart/form-data' },
-          });
-          alert('Test results uploaded successfully!');
-          console.log('Upload successful:', response.data);
-          fetchDashboardData();
-        } catch (error) {
-          console.error('Error uploading test results:', error);
-          alert('Failed to upload test results.');
-        }
-      }
-    };
-    fileInput.click();
+    navigate("/UploadTestResults");
+    
+   
   };
 
   const handleAttachCertificate = async () => {
-    const fileInput = document.createElement('input');
-    fileInput.type = 'file';
-    fileInput.accept = '.pdf,.png,.jpg';
-    fileInput.onchange = async (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        console.log(`Attaching certificate: ${file.name}`);
-        const formData = new FormData();
-        formData.append('certificate', file);
-        try {
-          const response = await axios.post('/api/attach-certificate', formData, {
-            headers: { 'Content-Type': 'multipart/form-data' },
-          });
-          alert('Certificate attached successfully!');
-          console.log('Certificate attached:', response.data);
-          fetchDashboardData();
-        } catch (error) {
-          console.error('Error attaching certificate:', error);
-          alert('Failed to attach certificate.');
-        }
-      }
-    };
-    fileInput.click();
+    
+   navigate('/CertificateTable')
   };
 
   if (loading) {
