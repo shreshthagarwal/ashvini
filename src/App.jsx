@@ -6,9 +6,12 @@ import About from "./About";
 import Portal from "./Portal";
 import Farmer from "./Farmer";
 import Lab from "./Lab";
+import BatchSelection from "./BatchSelection";
 import Consumer from "./Consumer";
 import Processor from "./Processor";
 import Manufacturer from "./Manufacturer";
+import LabScreen from "./LabScreen";
+
 import ForgotPassword from "./ForgotPassword";
 function App() {
   return (
@@ -24,6 +27,8 @@ function App() {
         <Route path="/Lab" element={<Lab />} />
         <Route path="/Processor" element={<Processor />} />
         <Route path="/Consumer" element={<Consumer />} />
+        <Route path="/BatchSelection" element={<BatchSelection />} />
+        <Route path="/LabScreen" element={<LabScreen />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
       </Routes>
     </BrowserRouter>
