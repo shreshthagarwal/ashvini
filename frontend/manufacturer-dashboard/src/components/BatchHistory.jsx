@@ -72,7 +72,7 @@ const BatchHistory = () => {
 
   return (
     <div className="batch-history-container">
-      <button className="dashboard" onClick={() => navigate("/manufacturer")}>
+      <button className="dashboard" onClick={() => navigate("/")}>
         ← Back to Dashboard
       </button>
 

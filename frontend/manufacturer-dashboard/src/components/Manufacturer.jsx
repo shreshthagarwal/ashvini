@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import "./Manufacturer.css"; 
 
 const Manufacturer = () => {
   const [location, setLocation] = useState("Fetching location...");
+  const [companyName, setCompanyName] = useState("Fetching company...");
   const [dashboardData, setDashboardData] = useState({
     batchesSubmitted: 34,
     reportsReceived: 30,
     pendingValidation: 4,
     certificatesApproved: 30,
   });
-  const navigate=useNavigate();
-  // ✅ LocationIQ API (active)
+
+  const navigate = useNavigate();
+
+  // ✅ Fetch location from GPS
   useEffect(() => {
     const fetchLocation = async () => {
       try {
@@ -35,86 +39,90 @@ const Manufacturer = () => {
     fetchLocation();
   }, []);
 
-  // ✅ API fetching for manufacturer data (commented out, fallback is hardcoded)
- 
+  // ✅ Fetch company name
+  useEffect(() => {
+    const fetchCompanyName = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/api/company");
+        // Expected response: { companyName: "Green Leaf Pvt Ltd" }
+        setCompanyName(res.data.companyName || "Company Not Found");
+      } catch (err) {
+        console.error("Error fetching company name:", err);
+        setCompanyName("Company Not Available");
+      }
+    };
+    fetchCompanyName();
+  }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6">
+    <>
+    <div className="manu">
+    <div className="manufacturer-container">
       {/* Header */}
-      <div className="bg-green-200 w-full p-4 flex justify-between items-center shadow-md">
-        <h1 className="text-xl font-bold">ASHVINI - MANUFACTURER</h1>
-        <div className="flex items-center space-x-2">
-          <span className="font-semibold">USER_NAME</span>
-          <span className="text-gray-600">PRODUCER_ID</span>
+      <div className="header">
+        <h1>ASHVINI - MANUFACTURER</h1>
+        <div className="user-info">
+          <span className="username">USER_NAME</span>
+          <span className="producer-id">PRODUCER_ID</span>
         </div>
       </div>
 
       {/* Notifications */}
-      <div className="bg-red-200 w-full text-center py-2 text-sm font-medium mt-2">
+      <div className="notifications">
         Notification/Alerts: Certificate for Batch #M102 approved | Batch #M109
         sent for testing
       </div>
 
-      {/* Dashboard Welcome */}
-      <div className="bg-white rounded-xl shadow-lg p-6 mt-6 w-full max-w-4xl text-center">
-        <h2 className="text-lg font-semibold text-gray-700">
-          Welcome, User_Name!
-        </h2>
-        <p className="text-sm text-gray-500 mb-6">
+      {/* Dashboard */}
+      <div className="dashboard">
+        <h2>Welcome, User_Name!</h2>
+        <p>
           Welcome to your produce dashboard — every harvest recorded, every batch
           valued.
         </p>
 
-        {/* Dashboard stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <button className="bg-gray-200 p-4 rounded-lg shadow hover:bg-gray-300 transition">
-            <p className="text-2xl font-bold">{dashboardData.batchesSubmitted}</p>
-            <p className="text-sm">Batches Submitted</p>
+        <div className="stats-grid">
+          <button>
+            <p className="stat-number">{dashboardData.batchesSubmitted}</p>
+            <p>Batches Submitted</p>
           </button>
 
-          <button className="bg-gray-200 p-4 rounded-lg shadow hover:bg-gray-300 transition">
-            <p className="text-2xl font-bold">{dashboardData.reportsReceived}</p>
-            <p className="text-sm">Reports Received</p>
+          <button>
+            <p className="stat-number">{dashboardData.reportsReceived}</p>
+            <p>Reports Received</p>
           </button>
 
-          <button className="bg-gray-200 p-4 rounded-lg shadow hover:bg-gray-300 transition">
-            <p className="text-2xl font-bold">{dashboardData.pendingValidation}</p>
-            <p className="text-sm">Pending Validation</p>
+          <button>
+            <p className="stat-number">{dashboardData.pendingValidation}</p>
+            <p>Pending Validation</p>
           </button>
 
-          <button className="bg-gray-200 p-4 rounded-lg shadow hover:bg-gray-300 transition">
-            <p className="text-2xl font-bold">
-              {dashboardData.certificatesApproved}
-            </p>
-            <p className="text-sm">Certificates Approved</p>
+          <button>
+            <p className="stat-number">{dashboardData.certificatesApproved}</p>
+            <p>Certificates Approved</p>
           </button>
         </div>
       </div>
 
       {/* Action Buttons */}
-      <div className="flex space-x-6 mt-6">
-        <button
-          onClick={() => navigate('/NewBatch')}
-          className="bg-green-300 px-6 py-4 rounded-xl shadow hover:bg-green-400 transition"
-        >
+      <div className="actions">
+        <button onClick={() => navigate("/NewBatch")}>
           Submit New Batch for Testing
         </button>
-        <button
-          onClick={() => navigate('/BatchHistory')}
-          className="bg-purple-300 px-6 py-4 rounded-xl shadow hover:bg-purple-400 transition"
-        >
+        <button onClick={() => navigate("/BatchHistory")}>
           Batch Status History & QR Generation
         </button>
       </div>
 
       {/* Footer */}
-      <div className="bg-gray-300 w-full p-4 mt-10 text-center text-sm">
+      <div className="footer">
         <p>
-          Company Name: <span className="font-semibold">Green Leaf Pvt Ltd</span>{" "}
-          | Location: {location}
+          Company Name: <strong>{companyName}</strong> | Location: {location}
         </p>
       </div>
     </div>
+    </div>
+    </>
   );
 };
 

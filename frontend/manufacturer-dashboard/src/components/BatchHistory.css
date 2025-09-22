@@ -1,3 +1,6 @@
+*{
+  color:#2e1e1e
+}
 .batch-history-container {
   padding: 20px;
   font-family: Arial, sans-serif;
@@ -101,4 +104,157 @@
   border-radius: 6px;
   margin: 10px auto;
   display: inline-block;
+}
+/* BatchHistory.css */
+
+.batch-history-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9faf4;
+  min-height: 100vh;
+  width:100vw;
+  padding: 20px;
+}
+
+/* Back to dashboard button */
+.dashboard {
+  background-color: #8b5e5e;
+  color: white;
+  padding: 8px ;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+.dashboard:hover {
+  background-color: #6d4747;
+}
+
+/* Heading */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #5a2d2d;
+}
+
+/* Table */
+.batch-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+}
+
+.batch-table th,
+.batch-table td {
+  border: 1px solid #c7b1b1;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.batch-table th {
+  background-color: #d5b7b7;
+  color: #2e1e1e;
+  font-weight: bold;
+}
+
+/* Batch ID as button */
+.batch-id {
+  background: none;
+  border: none;
+  color: #5a2d2d;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.batch-id:hover {
+  color: #2e1e1e;
+}
+
+/* Status colors */
+.approved {
+  color: green;
+  font-weight: bold;
+}
+.pending {
+  color: red;
+  font-weight: bold;
+}
+
+/* Download button */
+.download {
+  background-color: #a07878;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.download:hover {
+  background-color: #855f5f;
+}
+
+/* Modal styling */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  animation: flashAnim 0.3s ease-in-out;
+}
+
+.close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.provenance-section {
+  margin: 15px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.generate-btn {
+  display: block;
+  margin: 0 auto;
+  background-color: #8b5e5e;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.generate-btn:hover {
+  background-color: #6d4747;
+}
+
+.batch-label {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Flash animation */
+@keyframes flashAnim {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }

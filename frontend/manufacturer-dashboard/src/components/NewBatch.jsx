@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./NewBatch.css";
 
 const NewBatch = () => {
   const [batchId, setBatchId] = useState("");
@@ -15,7 +16,8 @@ const NewBatch = () => {
     processReport: null,
   });
 
-  const navigate=useNavigate();
+  const navigate = useNavigate();
+
   // Generate random Batch ID
   const generateBatchId = () => {
     const id = "BATCH-" + Math.floor(Math.random() * 100000);
@@ -56,124 +58,123 @@ const NewBatch = () => {
     */
     alert("Batch submitted for testing (mock).");
   };
-
+  const fetchUserData = async () => {
+    try {
+      const res = await axios.get("/api/user"); 
+      setUser(res.data);
+    } catch (err) {
+      console.error("Error fetching user:", err);
+      setUser({ username: "Guest", producerId: "N/A" });
+    }
+  };
+const [user, setUser] = useState({ username: "", producerId: "" });
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6">
+    <div className="newbatch-container">
       {/* Header */}
-      <div className="bg-green-200 w-full p-4 flex justify-between items-center shadow-md">
-        <h1 className="text-xl font-bold">ASHVINI - MANUFACTURER</h1>
-        <div className="flex items-center space-x-2">
-          <span className="font-semibold">USER_NAME</span>
-          <span className="text-gray-600">PRODUCER_ID</span>
-        </div>
-      </div>
+      <div className="header">
+            <img src="./src/assets/ashvini.svg" alt="Ashvini Lab Logo" />
+
+        <h1>ASHVINI - MANUFACTURER</h1>
+
+        <div className="user">
+    <p>{user.username}</p>
+    <p>{user.producerId}</p>
+  </div>
+</div>
 
       {/* Back to Dashboard */}
-      <div className="bg-red-200 w-full text-center py-2 text-sm font-medium mt-2 cursor-pointer">
-       <button className="dashboard" onClick={()=>navigate('/manufacturer')}> ← Back to Dashboard</button>
+      <div className="back-bar">
+        <button className="back-btn" onClick={() => navigate("/")}>
+          ← Back to Dashboard
+        </button>
       </div>
 
-      {/* Form Section */}      
-      <div className="bg-white rounded-xl shadow-lg p-6 mt-6 w-full max-w-4xl">
-        <div className="flex justify-between items-center mb-6">
-          <button
-            onClick={generateBatchId}
-            className="bg-gray-300 px-4 py-2 rounded shadow hover:bg-gray-400 transition"
-          >
+      {/* Form Section */}
+      <div className="form-wrapper">
+        <div className="batch-header">
+          <button className="generate-btn" onClick={generateBatchId}>
             Click to Generate Batch ID
           </button>
-          <p className="text-gray-600">
+          <p className="batch-id">
             {batchId ? `Your Batch ID: ${batchId}` : "Your Batch ID will show here"}
           </p>
         </div>
 
-        <form
-          onSubmit={handleSubmit}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
-        >
+        <form onSubmit={handleSubmit} className="batch-form">
+          <p>Herb Name:</p>
           <input
             type="text"
             name="herbName"
             placeholder="Enter Herb Name"
             value={formData.herbName}
             onChange={handleChange}
-            className="p-3 border rounded"
             required
           />
-
+          <p>Farmer Id:</p>
           <input
             type="text"
             name="farmerId"
             placeholder="Enter Farmer ID"
             value={formData.farmerId}
             onChange={handleChange}
-            className="p-3 border rounded"
             required
           />
-
+            <p>Quantity:</p>
           <input
             type="number"
             name="quantity"
             placeholder="Enter Quantity"
             value={formData.quantity}
             onChange={handleChange}
-            className="p-3 border rounded"
             required
           />
-
+<p>Moisture Content:</p>
           <input
             type="text"
             name="moistureContent"
             placeholder="Enter Moisture Content"
             value={formData.moistureContent}
             onChange={handleChange}
-            className="p-3 border rounded"
           />
-
+<p>Harvest Date:</p>
           <input
             type="date"
             name="harvestDate"
             value={formData.harvestDate}
             onChange={handleChange}
-            className="p-3 border rounded"
+            placeholder="Harvest Date"
             required
           />
-
+<p>Submission Date:</p>
           <input
             type="date"
             name="submissionDate"
             value={formData.submissionDate}
             onChange={handleChange}
-            className="p-3 border rounded"
             required
           />
-
+<p>Storage Conditions:</p>
           <input
             type="text"
             name="storageConditions"
             placeholder="Enter Storage Conditions"
             value={formData.storageConditions}
             onChange={handleChange}
-            className="p-3 border rounded"
           />
 
           {/* File Upload */}
-          <div className="flex flex-col">
-            <label className="mb-2 text-sm font-medium">Upload Process Report</label>
+          <div className="file-upload">
+            <p>Upload Process Report</p>
             <input
               type="file"
               onChange={handleFileChange}
-              className="p-2 border rounded"
               accept=".pdf,.doc,.docx,.jpg,.png"
             />
           </div>
 
           {/* Submit Button */}
-          <div className="col-span-2">
-            <button
-              type="submit"
-              className="w-full bg-red-400 text-white py-3 rounded-lg hover:bg-red-500 transition"
-            >
+          <div className="submit-section">
+            <button type="submit" className="submit-btn">
               Click to Send for Testing
             </button>
           </div>
