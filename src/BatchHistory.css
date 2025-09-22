@@ -1,0 +1,104 @@
+.batch-history-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.dashboard {
+  background: #8b5e5e;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.batch-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.batch-table th,
+.batch-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.batch-id {
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.approved {
+
+  font-weight: bold;
+}
+
+.pending {
+
+  font-weight: bold;
+}
+
+.download,
+.generate-btn {
+  background: #6b8e23;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color:black;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 500px;
+  text-align: center;
+  position: relative;
+  animation: flashIn 0.5s;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.flash {
+  animation: flashIn 0.5s;
+}
+
+@keyframes flashIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.batch-label {
+  background: #6b8e23;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+  margin: 10px auto;
+  display: inline-block;
+}

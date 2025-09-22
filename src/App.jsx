@@ -14,12 +14,15 @@ import Manufacturer from "./Manufacturer";
 import LabScreen from "./LabScreen";
 import UploadTestResults from "./UploadTestResults";
 import CertificateTable from "./CertificateTable";
-
+import NewBatch from "./NewBatch";
+import BatchHistory from "./BatchHistory";
 import ForgotPassword from "./ForgotPassword";
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/BatchHistory" element={<BatchHistory />} />  
+        <Route path="/NewBatch" element={<NewBatch />} />
         <Route path="/CertificateTable" element={<CertificateTable />} />
         <Route path="/UploadTestResults" element={<UploadTestResults />} />
         <Route path="/login" element={<Login />} />
