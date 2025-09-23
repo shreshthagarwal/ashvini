@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Dashboard.css'
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -39,10 +40,14 @@ function Dashboard() {
   return (
     <div className="dashboard-screen">
       <header>
-        <h2>ASHVINI-LABORATORY</h2>
+        <div className="logo">
+          <img height="40px"src="./src/assets/ashvini.svg"></img>
+<h2>ASHVINI-LABORATORY</h2>
+        </div>
+        
         <div className="user-info">
           <p>{dashboardData.username}</p>
-          <p>LABORATORY_ID</p>
+          <p>{dashboardData.laboratoryId}</p>
         </div>
       </header>
 

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import "./CertificateTable.css";
 
 const CertificateTable = () => {
   const [batches, setBatches] = useState([
@@ -19,23 +20,50 @@ const CertificateTable = () => {
   ]);
 
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedFile, setSelectedFile] = useState(null);
 
-  // Example API fetch (commented out)
-  /*
-  useEffect(() => {
-    fetch("https://api.example.com/batches")
-      .then((res) => res.json())
-      .then((data) => setBatches(data))
-      .catch((err) => console.error(err));
-  }, []);
-  */
+  // Convert file -> Base64 string for storage
+  const fileToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  };
 
-  const handleFileChange = (e, batchId) => {
+  // Handle certificate upload from user’s PC
+  const handleAttachCertificate = async (e, batchId) => {
     const file = e.target.files[0];
-    if (file) {
-      setSelectedFile(file);
-      alert(`Certificate "${file.name}" attached for Batch ${batchId}`);
+    if (!file) return;
+
+    try {
+      const base64File = await fileToBase64(file);
+
+      // Save file in localStorage with key = batchId
+      localStorage.setItem(`certificate_${batchId}`, base64File);
+
+      alert(`✅ Certificate "${file.name}" uploaded for Batch ${batchId}`);
+    } catch (error) {
+      console.error("❌ File conversion failed:", error);
+    }
+  };
+
+  // Retrieve certificate (for viewing)
+  const getCertificate = (batchId) => {
+    return localStorage.getItem(`certificate_${batchId}`);
+  };
+
+  // Handle viewing certificate
+  const handleViewCertificate = (batchId) => {
+    const cert = getCertificate(batchId);
+    if (cert) {
+      // Open certificate in new tab (works for PDF/image)
+      const newWindow = window.open();
+      newWindow.document.write(
+        `<iframe src="${cert}" width="100%" height="100%"></iframe>`
+      );
+    } else {
+      alert("⚠️ No certificate uploaded for this batch.");
     }
   };
 
@@ -82,7 +110,7 @@ const CertificateTable = () => {
                   <>
                     <input
                       type="file"
-                      onChange={(e) => handleFileChange(e, batch.batchId)}
+                      onChange={(e) => handleAttachCertificate(e, batch.batchId)}
                       style={{ display: "none" }}
                       id={`file-upload-${batch.batchId}`}
                     />
@@ -91,7 +119,7 @@ const CertificateTable = () => {
                     </label>
                   </>
                 ) : (
-                  <button onClick={() => alert("Viewing certificate")}>
+                  <button onClick={() => handleViewCertificate(batch.batchId)}>
                     View Certificate
                   </button>
                 )}

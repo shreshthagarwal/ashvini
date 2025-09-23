@@ -4,12 +4,13 @@
   background-color: #fafafa;
   padding: 20px;
   min-height: 100vh;
- /* full height */
-  width: 100vw;        /* full width */
+  max-width: 90vw;        
   margin: 0;  
 }
-/* General Page */
 
+*{
+  max-width: 90vw;;
+}
 
 /* Header */
 header {
@@ -24,14 +25,14 @@ header {
 
 header h2 {
   margin: 0;
-  color: #146c43;
+  color: #115a38;
   font-size: 1.5rem;
   font-weight: bold;
 }
 
 .user-info {
   text-align: right;
-  font-size: 0.9rem;
+  font-size: 40px;
   color: #444;
 }
 
@@ -63,7 +64,7 @@ header h2 {
 
 /* Status cards */
 .status-cards {
-  display: grid;
+  display: flex;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 15px;
   margin-bottom: 20px;
