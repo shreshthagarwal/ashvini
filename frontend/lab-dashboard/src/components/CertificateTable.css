@@ -1,0 +1,120 @@
+/* CertificateTable.css */
+*{
+    color:black;
+}
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  font-family: Arial, sans-serif;
+  background: #f8fdf8;
+}
+
+/* Container */
+div {
+  width: 100vw;
+  padding: 20px;
+  background: #f8fdf8;
+  box-sizing: border-box;
+}
+
+/* Main Heading */
+h2 {
+  background: #c8f7c5;
+  padding: 15px;
+  margin: 0;
+  font-size: 22px;
+  color: #1b4d1b;
+  border-radius: 6px 6px 0 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Notifications */
+p {
+  background: #e1f7e0;
+  padding: 8px 15px;
+  font-size: 14px;
+  color: #333;
+  margin: 0;
+  border-bottom: 1px solid #b5dcb4;
+}
+
+/* Section Heading */
+h3 {
+  background: #f5fbe6;
+  margin: 0;
+  padding: 10px;
+  font-size: 16px;
+  color: #2c5c2c;
+  font-weight: bold;
+  border-bottom: 2px solid #b5dcb4;
+}
+
+/* Search Box */
+input[type="text"] {
+  margin: 10px 0;
+  padding: 8px 12px;
+  border: 1px solid #b5dcb4;
+  border-radius: 4px;
+  width: 250px;
+  outline: none;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #d7f5d6;
+  margin-top: 10px;
+}
+
+th {
+  background: #66cc66;
+  color: #064d06;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #6bb56b;
+}
+
+td {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #b5dcb4;
+  font-size: 14px;
+}
+
+/* Buttons */
+button {
+  background: #008000;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #006600;
+}
+
+/* Status Column */
+td:last-child {
+  font-weight: bold;
+}
+
+/* Pure CSS trick to color statuses */
+td:last-child {
+  color: #333;
+}
+
+/* Use nth-child to style based on row */
+tbody tr:nth-child(odd) td:last-child {
+  color: #e65c00; /* PENDING (simulate alternating) */
+}
+tbody tr:nth-child(even) td:last-child {
+  color: #008000; /* APPROVED (simulate alternating) */
+}

@@ -1,0 +1,109 @@
+/* Main screen wrapper */
+.dashboard-screen {
+  font-family: Arial, sans-serif;
+  background-color: #fafafa;
+  padding: 20px;
+  min-height: 100vh;
+ /* full height */
+  width: 100vw;        /* full width */
+  margin: 0;  
+}
+/* General Page */
+
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #d4edda;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+header h2 {
+  margin: 0;
+  color: #146c43;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.user-info {
+  text-align: right;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+/* Notifications bar */
+.notifications-bar {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Greeting row */
+.greeting-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.greeting-row strong {
+  color: #146c43;
+}
+
+/* Status cards */
+.status-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.status-cards > div {
+  background: #f1f1f1;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.status-cards p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.status-cards h3 {
+  margin-top: 10px;
+  font-size: 1.5rem;
+  color: #146c43;
+  font-weight: bold;
+}
+
+/* Proceed button */
+button {
+  display: block;
+  margin: 0 auto;
+  padding: 12px 20px;
+  background: #198754;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: #146c43;
+}

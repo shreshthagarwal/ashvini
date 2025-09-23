@@ -1,0 +1,99 @@
+/* BatchSelection.css */
+/* General Page */
+.batch-selection-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 45px;
+  background-color: #f9faf4;
+  min-height: 100vh;   /* full height */
+  width: 100vw;        /* full width */
+  margin: 0;           /* remove auto-centering */
+  padding: 20px;
+  box-sizing: border-box;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+}
+.batch-selection-container button{
+    font-size: 40%;
+}
+.header,
+.notifications-container,
+.status-summary,
+.action-tabs {
+  max-width: 1200px;    /* content doesn't stretch too wide on large screens */
+  width: 100%;
+  margin: 0 auto 20px auto;
+}
+.batch-selection-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+  background-color: #f9faf4;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.batch-selection-container h2 {
+  text-align: center;
+  color: #2e7d32;
+  margin-bottom: 30px;
+}
+
+/* Grid layout for batch cards */
+.batch-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+/* Individual batch card */
+.batch-card {
+  background: #ffffff;
+  border: 2px solid #c5e1a5;
+  border-radius: 12px;
+  padding: 20px;
+  width: 100%;
+  max-width: 320px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.batch-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.batch-card p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.batch-card strong {
+  color: #1b5e20;
+}
+
+/* Location info */
+.batch-card .location {
+  font-size: 13px;
+  margin-top: 8px;
+  color: #555;
+}
+
+/* Select button */
+.batch-card button {
+  margin-top: 15px;
+  background-color: #4caf50;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.batch-card button:hover {
+  background-color: #388e3c;
+}
