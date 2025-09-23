@@ -72,7 +72,7 @@ const [user, setUser] = useState({ username: "", producerId: "" });
     <div className="newbatch-container">
       {/* Header */}
       <div className="header">
-            <img src="./src/assets/ashvini.svg" alt="Ashvini Lab Logo" />
+            <img src="./assets/ashvini.svg" alt="Ashvini Lab Logo" />
 
         <h1>ASHVINI - MANUFACTURER</h1>
 
